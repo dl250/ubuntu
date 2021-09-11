@@ -28,9 +28,10 @@ sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git
 5. 插件
 git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 git clone https://github.com/xiaorouji/openwrt-passwall.git
-
+———————————————————————————————————————————————————————————————————————————————————————————————————————————
+git clone https://github.com/fw876/helloworld.git
+———————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 6. 回退到lean目录 cd ..
 ./scripts/feeds clean
