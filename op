@@ -29,6 +29,7 @@ sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git
 git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
 git clone https://github.com/xiaorouji/openwrt-passwall.git                                                                        git clone https://github.com/xiaorouji/openwrt-passwall2.git
+git clone https://github.com/xiaorouji/openwrt-passwall/tree/luci                lao
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
 git clone https://github.com/fw876/helloworld.git
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
