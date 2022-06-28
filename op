@@ -32,6 +32,9 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git                     
 git clone https://github.com/xiaorouji/openwrt-passwall/tree/luci                lao
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
 git clone https://github.com/fw876/helloworld.git                                                                                           git clone https://github.com/linkease/istore.git 
+                                                                                                                                                                                                  git clone https://github.com/linkease/istore-ui.git
+
+
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 6. 回退到lean目录 cd ..
