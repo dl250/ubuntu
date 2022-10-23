@@ -18,7 +18,7 @@ http://releases.ubuntu.com/14.04.5/ubuntu-14.04.5-desktop-amd64.iso
 
 2.cd; mkdir openwrt-wiwiz
 
-3.cd openwrt-wiwiz
+3.cd openwrt-wiwiz/lean
 
 4.git clone https://github.com/coolsnowwolf/lede
 
