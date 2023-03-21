@@ -16,10 +16,6 @@ sudo reboot
 1. 首先装好 Ubuntu 64bit，推荐  Ubuntu  14 LTS x64
 http://releases.ubuntu.com/14.04.5/ubuntu-14.04.5-desktop-amd64.iso
 
-2.cd; mkdir openwrt-wiwiz
-
-3.cd openwrt-wiwiz/lean
-
 4.git clone https://github.com/coolsnowwolf/lede
 
 有n个软件未被升级  sudo apt-get dist-upgrade
