@@ -3,6 +3,7 @@ sudo apt-get update
 sudo apt-get install openssh-server open-vm-tools-desktop -y
 sudo reboot
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
+有n个软件未被升级  sudo apt-get dist-upgrade 
 
 编译教程：
 
@@ -13,20 +14,30 @@ sudo reboot
 
 编译命令如下:
 
-1. 首先装好 Ubuntu 64bit，推荐  Ubuntu  14 LTS x64
-http://releases.ubuntu.com/14.04.5/ubuntu-14.04.5-desktop-amd64.iso
+1. 首先装好 Linux 系统，推荐 Debian 11 或 Ubuntu LTS
 
-4.git clone https://github.com/coolsnowwolf/lede
+ 2. 安装编译依赖
 
-有n个软件未被升级  sudo apt-get dist-upgrade
+sudo apt update -y
+sudo apt full-upgrade -y
+sudo apt install -y ack antlr3 aria2 asciidoc autoconf automake autopoint binutils bison build-essential \
+bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \
+git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \
+libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz \
+mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pip libpython3-dev qemu-utils \
+rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
 
-5. git clone https://github.com/coolsnowwolf/lede 命令下载好源代码，
+3. git clone https://github.com/coolsnowwolf/lede 命令下载好源代码
+    cd lede
+    ./scripts/feeds update -a
+    ./scripts/feeds install -a
+    make menuconfig
 
-然后 cd lede 进入目录
+4. 然后 cd lede 进入目录
 
-6. 进入目录 cd package/lean
+5. 进入目录 cd package/lean
 
-7. 插件
+6. 插件
 git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
 git clone https://github.com/xiaorouji/openwrt-passwall.git                                                                        git clone https://github.com/jerrykuku/lua-maxminddb.git  #git lua-maxminddb 依赖
@@ -58,38 +69,32 @@ git clone https://github.com/fw876/helloworld.git
 
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-6. 回退到lean目录 cd ..
-./scripts/feeds clean
+7. make -j8 download v=s                   #下载dl库（国内请尽量全局科学上网）
 
-7. ./scripts/feeds update -a 
-   ./scripts/feeds install -a
+8. make defconfig                          #测试编译环境
 
-   make menuconfig 
-
-8. make -j8 download v=s                   #下载dl库（国内请尽量全局科学上网）
-
-9. make defconfig                          #测试编译环境
-
-10.最后选好你要的路由，输入 make -j1 V=s （-j1后面是线程数。第一次编译推荐用单线程，国内请尽量全局科学上网）即可开始编译你要的固件了。
+9. 最后选好你要的路由，输入 make -j1 V=s （-j1后面是线程数。第一次编译推荐用单线程，国内请尽量全局科学上网）即可开始编译你要的固件了。
 
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 以后二次编译：重新配置
-cd lede                                                          #进入LEDE目录
-git pull                                                         #同步更新大雕源码
-./scripts/feeds update -a && ./scripts/feeds install -a          #更新FEEDS
-rm -rf ./tmp && rm -rf .config                                   #清除编译配置和缓存
-make menuconfig                                                  #进入编译配置菜单
-make -j$(($(nproc) + 1)) V=s                                     n=线程数+1，例如4线程的I5填-j5
+cd lede                                                             进入LEDE目录
+git pull                                                              同步更新大雕源码
+./scripts/feeds update -a 
+./scripts/feeds install -a  
+rm -rf ./tmp && rm -rf .config                  清除编译配置和缓存
+make menuconfig                                        进入编译配置菜单
+make V=s -j$(nproc)                                    n=线程数+1，例如4线程的I5填-j5
 
 编译完成后固件输出在/lede/bin/targets
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
 二次编译：配置不变
-cd lede                                                          #进入LEDE目录
-git pull                                                         #同步更新大雕源码
-./scripts/feeds update -a && ./scripts/feeds install -a          #更新FEEDS
-make defconfig                                                   #测试编译环境
-make -j$(($(nproc) + 1)) V=s                                     n=线程数+1，例如4线程的I5填-j5
+cd lede                                                              进入LEDE目录
+git pull                                                               更新LEDE源码
+./scripts/feeds update -a 
+./scripts/feeds install -a
+make defconfig                                                测试编译环境
+make V=s -j$(nproc)                        n=线程数+1，例如4线程的I5填-j5
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 以下操作请把mj替换为自己的用户名
