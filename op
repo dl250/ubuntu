@@ -36,6 +36,8 @@ uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
 
   ./scripts/feeds install -a
 
+ 在 ./scripts/feeds install -a 操作之后替换 golang 为 1.22.x 版本 go1.22
+
   rm -rf feeds/packages/lang/golang
 
   git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
