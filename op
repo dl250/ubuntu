@@ -45,7 +45,7 @@ uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
 
 7. 插件
 git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git
-git clone https://github.com/animegasan/luci-app-quickstart.git
+git clone https://github.com/asvow/luci-app-tailscale.git
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
 易有云
 git clone https://github.com/linkease/istore.git
