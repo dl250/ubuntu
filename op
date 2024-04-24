@@ -5,11 +5,7 @@ sudo reboot
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
 有n个软件未被升级  sudo apt-get dist-upgrade 
                  sudo apt-get install +文件名
-1. 不要用 root 用户 git 和编译！！！
-2. 国内用户编译前最好准备好梯子
-3. 默认登陆IP 192.168.1.1, 密码 password
 
-编译命令如下:
 
 1. 首先装好 Linux 系统，推荐 Debian 11 或 Ubuntu LTS
 
@@ -33,12 +29,6 @@ uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
 
   ./scripts/feeds install -a
 
- 在 ./scripts/feeds install -a 操作之后替换 golang 为 1.22.x 版本 go1.22
-
-  rm -rf feeds/packages/lang/golang
-
-  git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
-
   make menuconfig
 
 6. 进入目录 cd package/lean
@@ -47,8 +37,9 @@ uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
 git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git
 git clone https://github.com/asvow/luci-app-tailscale.git
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
-易有云
-git clone https://github.com/linkease/istore.git
+feeds.conf.default 软件源
+src-git istore https://github.com/linkease/istore;main
+———————————————————————————————————————————————————————————————————————————————————————————————————————————
 src-git nas https://github.com/linkease/nas-packages.git
 src-git nas_luci https://github.com/linkease/nas-packages-luci.git
 src-git istore https://github.com/linkease/istore
