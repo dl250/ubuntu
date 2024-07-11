@@ -122,4 +122,9 @@ etc/config/firewall            #防火墙
 etc/config/gfw.ilst            #自定义gfw列表
 
 
+Git pull「合并将覆盖对以下文件的本地更改」
+git stash
+git pull origin master
+git stash pop
+——————————————————————————————————————————————————
 https://cmi.hanwckf.top/p/immortalwrt-mt798x/#%E5%9B%BA%E4%BB%B6%E6%BA%90%E7%A0%81
