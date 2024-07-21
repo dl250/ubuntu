@@ -35,7 +35,8 @@ uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
 
 7. 插件
 git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git
-git clone https://github.com/asvow/luci-app-tailscale.git
+git clone https://github.com/uparrows/luci-theme-atmaterial.git
+git clone https://github.com/0x676e67/luci-theme-design.git
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
 istore
 src-git nas https://github.com/linkease/nas-packages.git
