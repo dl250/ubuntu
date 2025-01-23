@@ -34,6 +34,7 @@ uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
 6. 进入目录 cd package/lean
 
 7. 插件
+git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git
 git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git
 git clone https://github.com/uparrows/luci-theme-atmaterial.git
 git clone https://github.com/0x676e67/luci-theme-design.git
