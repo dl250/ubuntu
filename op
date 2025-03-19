@@ -3,11 +3,11 @@ sudo apt-get update
 sudo apt-get install openssh-server open-vm-tools-desktop -y
 sudo reboot
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
-有n个软件未被升级  sudo apt-get dist-upgrade 
-                 sudo apt-get install +文件名
-
-
-1. 首先装好 Ubuntu 24.02
+有n个软件未被升级 
+sudo apt-get dist-upgrade 
+sudo apt-get install +文件名
+———————————————————————————————————————————————————————————————————————————————————————————————————————————
+1. 首先装好 Ubuntu 22.04
 2. 安装编译依赖
 sudo apt update -y
 sudo apt full-upgrade -y
@@ -18,27 +18,23 @@ libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libpython3-d
 libssl-dev libtool lrzsz mkisofs msmtp ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 \
 python3-pyelftools python3-setuptools qemu-utils rsync scons squashfs-tools subversion swig texinfo \
 uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
-
+———————————————————————————————————————————————————————————————————————————————————————————————————————————
 3. git clone https://github.com/coolsnowwolf/lede 命令下载好源代码
- 
-4. 然后 cd lede 进入目录
-
-5. cd lede
+——————————————————————————————————————————————————————————————————————————————————————————————————————————— 
+4. cd lede
   ./scripts/feeds update -a
 
   ./scripts/feeds install -a
 
   make menuconfig
 
-6. 进入目录 cd package/lean
+5. 进入目录 cd package/lean
 
-7. 插件
+6. 插件
 git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git
 git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git
 git clone https://github.com/uparrows/luci-theme-atmaterial.git
 git clone https://github.com/0x676e67/luci-theme-design.git
-
-git clone https://github.com/DHDAXCW/theme.git
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————
 替换默认主题
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/' feeds/luci/collections/luci/Makefile
@@ -55,8 +51,7 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git
 集客 AC
 git clone https://github.com/lwb1978/openwrt-gecoosac.git
 luci-app-gecoosac
-
-
+———————————————————————————————————————————————————————————————————————————————————————————————————————————
  git clone https://github.com/wiwizcom/WiFiPortal.git                                                                                   
  选择以下项目（必选）：
  
