@@ -115,15 +115,6 @@ make V=s -j$(nproc)                            n=线程数+1，例如4线程的I
 3.拷贝到\files\etc\config\network
 这样编译完，network就是你自己配置好的network，注意提取的文件路径和权限要一致
 
-一些常用的配置，路由器路径
-etc/config/system              #里面有主机名，时区，ntp时间服务器设置
-etc/config/network             #网络设置
-etc/config/dhcp                #如果对dhcp有分配ip
-etc/config/ddns                #ddns设置
-etc/config/aliddns             #aliddns设置
-etc/config/adbyby              #广告过滤大师设置 ，如果有自定义广告过滤大师可以复制过去
-etc/config/firewall            #防火墙
-etc/config/gfw.ilst            #自定义gfw列表
 
 ——————————————————————————————————————————————————
 https://cmi.hanwckf.top/p/immortalwrt-mt798x/#%E5%9B%BA%E4%BB%B6%E6%BA%90%E7%A0%81
