@@ -119,7 +119,7 @@ git reset --hard HEAD^         回退到上个版本
 git reset --hard HEAD~3        回退到前3次提交之前，以此类推，回退到n次提交之前
 git reset --hard commit_id     退到/进到 指定commit的sha码
 ——————————————————————————————————————————————————
-稍微学一下git的使用吧
+指定 R24.9.18  内核6.6.52 新源码无法使用旧主题
 git clone https://github.com/coolsnowwolf/lede
 cd lede
 git checkout 6dc420855ab0238900586432a1c3f96c603cfa0f  6.6.52
