@@ -122,7 +122,7 @@ git reset --hard commit_id     退到/进到 指定commit的sha码
 稍微学一下git的使用吧
 git clone https://github.com/coolsnowwolf/lede
 cd lede
-git checkout 指定历史源码位置
+git checkout 6dc420855ab0238900586432a1c3f96c603cfa0f  6.6.52
 ——————————————————————————————————————————————————
 删除历史编译文件
 make clean
