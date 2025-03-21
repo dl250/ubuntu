@@ -118,8 +118,11 @@ git log                        查看源码更新日志
 git reset --hard HEAD^         回退到上个版本
 git reset --hard HEAD~3        回退到前3次提交之前，以此类推，回退到n次提交之前
 git reset --hard commit_id     退到/进到 指定commit的sha码
+——————————————————————————————————————————————————
 稍微学一下git的使用吧
 git clone https://github.com/coolsnowwolf/lede
 cd lede
-git checkout 9d124b993644b4f77749788936c44ca0c884f184
-点评
+git checkout 指定历史源码位置
+——————————————————————————————————————————————————
+删除历史编译文件
+make clean
