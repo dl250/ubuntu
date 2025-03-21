@@ -23,10 +23,8 @@ uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
 ——————————————————————————————————————————————————————————————————————————————————————————————————————————— 
 4. cd lede
   ./scripts/feeds update -a
-
   ./scripts/feeds install -a
-
-  make menuconfig
+   make menuconfig
 
 5. 进入目录 cd package/lean
 
