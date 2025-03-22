@@ -116,6 +116,7 @@ cd lede
 git checkout 6dc420855ab0238900586432a1c3f96c603cfa0f  6.6.52
 ——————————————————————————————————————————————————
 ——————————————————————————————————————————————————
+https://github.com/coolsnowwolf/lede/issues/13335
 rustc-1.84.0-src/.built] Error 1 
 删除历史编译文件
 m 调整ubuntu20.04交换分区
