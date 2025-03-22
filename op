@@ -116,5 +116,25 @@ cd lede
 git checkout 6dc420855ab0238900586432a1c3f96c603cfa0f  6.6.52
 ——————————————————————————————————————————————————
 ——————————————————————————————————————————————————
+rustc-1.84.0-src/.built] Error 1 
 删除历史编译文件
-make clean
+m 调整ubuntu20.04交换分区
+
+free -h # 查看交换分区
+
+sudo fallocate -l 8G /swapfile
+
+提示：fallocate失败，文本文件忙,需先关闭交换分区
+
+sudo swapoff /swapfile
+
+再依次执行以下命令：
+
+sudo fallocate -l 8G /swapfile
+
+sudo chmod 600 /swapfile
+
+sudo mkswap /swapfile
+
+sudo swapon /swapfile
+ake clean
