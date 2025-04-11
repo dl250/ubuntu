@@ -32,8 +32,12 @@ make V=s -j1             单线程编译
 =========================================================================================
 5.自定义插件
 cd openwrt/package
+主题
 git clone https://github.com/jerrykuku/luci-theme-argon.git
 git clone https://github.com/sirpdboy/luci-theme-kucat.git
+分区一键扩容
+git clone https://github.com/sirpdboy/luci-app-partexp.git package/luci-app-partexp
+
 =========================================================================================
 修改需要的ip地址
 默认管理ip修改文件路径     默认ip为192.168.1.1
