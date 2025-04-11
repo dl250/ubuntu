@@ -1,0 +1,141 @@
+使用 OpenWrt 24.10.0 官网源码编译固件
+创建日期：2023/04/05   修改日期：2025/02/12   OpenWrt
+
+下文以官方 24.10.0 为例
+下文以为 x86 架构编译为例，若为其他平台（路由器、树莓派等其他架构）则下文中获取内核的魔法值、菜单配置需自行更改
+前言
+用过大佬编译好的固件，也自己基于大佬的固件手动编译，最终还是决定用官方的源码编译，只加入自己想要的软件
+
+相关链接：
+
+源码：https://github.com/openwrt/openwrt
+固件：https://downloads.openwrt.org
+准备工作
+环境
+系统：Debian 11 x64位系统
+网络：可以访问外网（国内请全局科学上网）
+磁盘：大约有 50G 的空闲空间
+内存：至少 4G 物理内存
+CPU：越快越好，影响编译速度
+依赖
+以 root 用户执行以下命令或者有 root 权限的用户
+
+sudo apt update -y
+sudo apt install -y ack antlr3 aria2 asciidoc autoconf automake autopoint binutils bison build-essential \
+bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \
+git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \
+libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz \
+mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pip libpython3-dev qemu-utils \
+rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
+源码
+以下命令以普通用户执行，不要用 root
+
+# 下载源码（-b 指定分支/标签、 --single-branch 仅下载单个分支/标签、 --depth=1 只下载最新的一次提交 ）
+git clone -b v24.10.0 --single-branch --depth=1 https://github.com/openwrt/openwrt.git
+# 进入到该目录
+cd openwrt
+配置
+时区
+# 编辑配置文件
+vim package/base-files/files/bin/config_generate +315
+# 修改时区为 CST-8
+set system.@system[-1].timezone='CST-8'
+# 再在下一行添加如下内容
+set system.@system[-1].zonename='Asia/Shanghai'
+修改完成后效果如下：
+
+
+
+默认IP
+默认管理IP为 192.168.1.1 ，可以根据自己的需求进行修改
+
+# 编辑配置文件
+vim package/base-files/files/bin/config_generate +165
+# 修改如下内容
+lan) ipad=${ipaddr:-"192.168.188.1"} ;;
+修改完成后效果如下：
+
+
+
+软件包
+系统软件包
+默认情况下，系统 feeds.conf.default 配置的下载地址是 git.openwrt.org ，该地址下载较慢，可以切换到 GitHub 下载
+
+编辑配置文件
+
+vim feeds.conf.default
+删除所有内容，粘贴如下内容并保存
+
+src-git packages https://github.com/openwrt/packages.git^201fd099b80a2931b7326ce20b0cbb824296c99f
+src-git luci https://github.com/openwrt/luci.git^7b0663a5557118499dc3b3d44550efc1b6fa3feb
+src-git routing https://github.com/openwrt/routing.git^e87b55c6a642947ad7e24cd5054a637df63d5dbe
+src-git telephony https://github.com/openwrt/telephony.git^fd605af7143165a2490681ec1752f259873b9147
+三方软件包
+添加第三方软件有两种方式：
+
+将软件包仓库地址写入 feeds.conf.default 文件中，可以参考当前目录下的 feeds.conf.default 文件
+使用 git clone 手动下载软件包放入到 package 文件夹中
+更新软件包
+执行以下代码更新 feeds 包
+
+./scripts/feeds update -a
+./scripts/feeds install -a
+菜单配置
+执行以下命令打开菜单配置
+
+make menuconfig
+终于来到了一个图形化界面，该界面有如下操作
+
+↑ ↓ 键：上下切换
+PgUp PgDn 键：上下翻页
+Enter 回车键：
+进入子菜单
+选择/确认
+Y 键：选中，在 < > 上进行操作，操作后变为 <*>
+N 键：取消选中，在 <*> 上进行操作，操作后变为 < >
+Esc 键：连击两下，返回上层菜单，如果在主菜单则为退出配置
+按照如下配置进行选择，其他未说明的不要动
+
+Target System -> x86
+Subtarget -> x86_64
+Target Images
+< > tar.gz
+< > ext4
+< > Build GRUB images
+(1) Seconds to wait before booting the default entry
+(256) Root filesystem partition size
+Base system
+< > dnsmasq
+<*> dnsmasq-full
+LuCI
+Collections
+<*> luci
+Modules
+Translations
+<*> Chinese Simplified
+Applications
+根据自己的需要选择软件包
+如果不小心配错了，可以执行以下命令重新配置
+
+rm -rf ./tmp && rm -rf .config
+make menuconfig
+预下载
+这里会先把编译时要下载的文件下载下来（只是一部分，后面编译阶段还会下载，仍需保持网络畅通）
+
+make download -j8 V=s
+编译
+接下来就要进入漫长的编译时间了，使用 -j 参数可以指定编译时使用的线程数
+
+亲测笔记本 i7-8750H 12线程全开需要接近2小时完成，单线程需要4-5小时
+
+# 根据CPU核心数开启指定线程数执行编译
+make V=s -j$(nproc)
+# 如果编译过程中报错了，需要使用单线程模式，确认出错的地方，然后排查（注：有时候单线程就不报错了）
+make V=s -j1
+获取成果
+编译完成后，镜像文件地址是：./bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.img.gz
+
+下载到本地后需要先解压
+
+# 如果是PVE中安装，上传 .img 文件后，可以使用以下命令导入镜像文件
+qm importdisk 100 /var/lib/vz/template/iso/openwrt-x86-64-generic-squashfs-combined-efi.img local
