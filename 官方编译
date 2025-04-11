@@ -35,6 +35,10 @@ cd openwrt/package
 git clone https://github.com/jerrykuku/luci-theme-argon.git
 git clone https://github.com/sirpdboy/luci-theme-kucat.git
 =========================================================================================
+修改需要的ip地址
+默认管理ip修改文件路径     默认ip为192.168.1.1
+package/base-files/files/bin/config_generate
+=========================================================================================
 二次编译：
 cd openwrt
 git pull
@@ -49,37 +53,16 @@ rm -rf ./tmp && rm -rf .config
 make menuconfig
 make V=s -j$(nproc)         多线程编译
 =========================================================================================
-修改需要的ip地址
-默认管理ip修改文件路径     默认ip为192.168.1.1
-package/base-files/files/bin/config_generate
+
 
 
 =========================================================================================
 =================================不用修改=================================================
 # 编辑配置文件
-vim package/base-files/files/bin/config_generate +315
+vim package/base-files/files/bin/config_generate
 # 修改时区为 CST-8
 set system.@system[-1].timezone='CST-8'
 # 再在下一行添加如下内容
 set system.@system[-1].zonename='Asia/Shanghai'
-修改完成后效果如下：
 ========================================================================================
 
-
-make download -j8 V=s
-编译
-接下来就要进入漫长的编译时间了，使用 -j 参数可以指定编译时使用的线程数
-
-亲测笔记本 i7-8750H 12线程全开需要接近2小时完成，单线程需要4-5小时
-
-# 根据CPU核心数开启指定线程数执行编译
-make V=s -j$(nproc)
-# 如果编译过程中报错了，需要使用单线程模式，确认出错的地方，然后排查（注：有时候单线程就不报错了）
-make V=s -j1
-获取成果
-编译完成后，镜像文件地址是：./bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.img.gz
-
-下载到本地后需要先解压
-
-# 如果是PVE中安装，上传 .img 文件后，可以使用以下命令导入镜像文件
-qm importdisk 100 /var/lib/vz/template/iso/openwrt-x86-64-generic-squashfs-combined-efi.img local
