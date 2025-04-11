@@ -38,7 +38,10 @@ git clone https://github.com/sirpdboy/luci-theme-kucat.git
 分区一键扩容
 git clone https://github.com/sirpdboy/luci-app-partexp.git package/luci-app-partexp
 
-=========================================================================================
+==================================================================================
+进入到 Base system ---> 菜单找到dnsmasq 选项将其去掉
+
+
 修改需要的ip地址
 默认管理ip修改文件路径     默认ip为192.168.1.1
 package/base-files/files/bin/config_generate
