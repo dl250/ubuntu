@@ -39,7 +39,7 @@ git clone https://github.com/sirpdboy/luci-theme-kucat.git
 分区一键扩容
 git clone https://github.com/sirpdboy/luci-app-partexp.git package/luci-app-partexp
 设置向导
-git clone https://github.com/sirpdboy/luci-app-wizard
+git clone https://github.com/kiddin9/luci-app-wizard.git
 ==================================================================================
 进入到 Base system ---> 菜单找到dnsmasq 选项将其去掉,不然添加passwall会报错
 ==================================================================================
