@@ -37,7 +37,10 @@ git clone https://github.com/jerrykuku/luci-theme-argon.git
 git clone https://github.com/sirpdboy/luci-theme-kucat.git
 分区一键扩容
 git clone https://github.com/sirpdboy/luci-app-partexp.git package/luci-app-partexp
-
+docker容器
+git clone https://github.com/mwarning/docker-openwrt-builder.git
+cd docker-openwrt-builder
+docker build -t openwrt_builder .
 ==================================================================================
 进入到 Base system ---> 菜单找到dnsmasq 选项将其去掉,不然添加passwall会报错
 ==================================================================================
