@@ -35,8 +35,10 @@ cd openwrt/package
 主题
 git clone https://github.com/derisamedia/luci-theme-alpha.git
 git clone https://github.com/jerrykuku/luci-theme-argon.git
+=========================================================================================
 v2rayA
 git clone https://github.com/v2rayA/v2raya-openwrt.git
+=========================================================================================
 luci-app-homeproxy
 https://github.com/kenzok8/small.git
 分区一键扩容
