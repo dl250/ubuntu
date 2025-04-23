@@ -1,3 +1,4 @@
 cd /tmp/nt
 opkg install *.ipk --force-reinstall
 https://github.com/v2rayA/v2raya-openwrt.git
+https://github.com/kenzok8/small-package
