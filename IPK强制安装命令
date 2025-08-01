@@ -4,4 +4,7 @@ https://github.com/v2rayA/v2raya-openwrt.git
 https://github.com/kenzok8/small-package
 
 
-git reset --hard commit_92d4a09c0a7e1ecca39332f267514f7e29c9a850
+git reset --hard 92d4a09
+
+ 强制推送:
+由于回退操作会改变历史，需要使用 git push -f 命令强制推送更改到远程仓库。
