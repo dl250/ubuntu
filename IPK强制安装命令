@@ -15,3 +15,5 @@ thread 'main' panicked at src/bootstrap/src/core/sanity.rs:336:25:
 couldn't find libc.a in musl libdir: lib
 
 sudo apt install musl musl-dev musl-tools
+
+export MUSL_ROOT=/usr/lib/musl
