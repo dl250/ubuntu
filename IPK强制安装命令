@@ -19,3 +19,4 @@ sudo apt install musl musl-dev musl-tools
 export MUSL_ROOT=/usr/lib/musl
 [target.x86_64-unknown-linux-musl]
 musl-root = "/path/to/openwrt/staging_dir/toolchain-*/libc"
+nano config.toml
