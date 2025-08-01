@@ -1,22 +1,5 @@
 cd /tmp/nt
 opkg install *.ipk --force-reinstall
+
 https://github.com/v2rayA/v2raya-openwrt.git
 https://github.com/kenzok8/small-package
-
-
-git reset --hard 92d4a09
-
- 强制推送:
-由于回退操作会改变历史，需要使用 git push -f 命令强制推送更改到远程仓库。
-NOTE: to silence this warning, add `change-id = 138986` or change-id = "ignore" at the top of `bootstrap.toml
-find . -name "bootstrap.toml"
-
-thread 'main' panicked at src/bootstrap/src/core/sanity.rs:336:25:
-couldn't find libc.a in musl libdir: lib
-
-sudo apt install musl musl-dev musl-tools
-
-export MUSL_ROOT=/usr/lib/musl
-[target.x86_64-unknown-linux-musl]
-musl-root = "/path/to/openwrt/staging_dir/toolchain-*/libc"
-nano config.toml
