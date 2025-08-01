@@ -8,3 +8,4 @@ git reset --hard 92d4a09
 
  强制推送:
 由于回退操作会改变历史，需要使用 git push -f 命令强制推送更改到远程仓库。
+NOTE: to silence this warning, add `change-id = 138986` or change-id = "ignore" at the top of `bootstrap.toml
