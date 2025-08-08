@@ -4,4 +4,4 @@ opkg install *.ipk --force-reinstall
 https://github.com/v2rayA/v2raya-openwrt.git
 https://github.com/kenzok8/small-package
 
-https://www.google.com/search?q=subconverter%E6%80%8E%E4%B9%88%E7%94%A8ubuntu&newwindow=1&sca_esv=f3a7ee0e23e81309&rlz=1C1CHZO_en__1157__1157&sxsrf=AE3TifPW_fT8tquQpYPWx4gWps-UmcwGIg%3A1754101195845&ei=y3WNaISvM5GOvr0PyrrloQw&ved=0ahUKEwjEwLaViOuOAxURh68BHUpdOcQQ4dUDCBA&uact=5&oq=subconverter%E6%80%8E%E4%B9%88%E7%94%A8ubuntu&gs_lp=Egxnd3Mtd2l6LXNlcnAiG3N1YmNvbnZlcnRlcuaAjuS5iOeUqHVidW50dUgAUABYAHAAeACQAQCYAQCgAQCqAQC4AQPIAQCYAgCgAgCYAwCSBwCgBwCyBwC4BwDCBwDIBwA&sclient=gws-wiz-serp
+git reset --hard 0dc62d9
